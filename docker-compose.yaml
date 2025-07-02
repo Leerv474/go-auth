@@ -1,0 +1,42 @@
+services:
+  postgres:
+    container_name: postgres_go_auth
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_DB: go_auth_db
+
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - 5432:5432
+    networks:
+      - go-demo
+    restart: on-failure
+  webhook:
+      image: almir/webhook
+      container_name: webhook-server
+      volumes:
+        - ./hooks.json:/etc/webhook/hooks.json
+      ports:
+        - "9000:9000"
+      command: -verbose -hooks=/etc/webhook/hooks.json -port=9000
+  app:
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+      - webhook
+    networks:
+      - go-demo
+
+networks:
+  go-demo:
+    driver: bridge
+
+volumes:
+  postgres:
+    driver: local

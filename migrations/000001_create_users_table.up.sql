@@ -1,0 +1,17 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE refresh_tokens(
+    id VARCHAR(255) UNIQUE NOT NULL,
+    token VARCHAR(512) UNIQUE NOT NULL,
+    userId INTEGER REFERENCES users(id),
+    keyPairId VARCHAR(255) UNIQUE NOT NULL,
+    userAgent VARCHAR(255) NOT NULL,
+    agentIp VARCHAR(25) NOT NULL,
+    issued_at TIMESTAMP NOT NULL,
+    expires_at TIMESTAMP NOT NULL
+);

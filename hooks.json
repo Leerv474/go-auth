@@ -1,0 +1,12 @@
+[
+  {
+    "id": "token-alert",
+    "execute-command": "/bin/echo",
+    "command-working-directory": "/tmp",
+    "pass-arguments-to-command": [
+      {
+        "source": "entire-payload"
+      }
+    ]
+  }
+]
