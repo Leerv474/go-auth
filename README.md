@@ -12,6 +12,12 @@ Implementation of JWT authentication in Golang as a first time practice.
 | /logout         | GET    | User logout             |
 | /user           | GET    | Basic user access point |
 
+_Swagger_ is used to generated documentation: `/swagger`
+
+## Entities
+
+- _users_ (id, username, password, created_at)
+- _refresh_tokens_ (id, token, userId, keyPairId, userAgent, agentIp, issued_at, expires_at)
 
 ## Running
 
@@ -26,4 +32,3 @@ Occupied ports:
 - 8080 - app
 - 5432 - database server
 - 9000 - webhook server
-
