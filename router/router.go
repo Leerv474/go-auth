@@ -18,7 +18,7 @@ func SetupRoutes(authService service.AuthService) http.Handler {
 	mux.HandleFunc("/login", handler.LoginHandler)
 	mux.HandleFunc("/refresh_tokens", handler.RefreshTokensHandler)
 	mux.HandleFunc("/logout", handler.LogoutHandler)
-	mux.HandleFunc("/user_access_point", handler.UserAccessPointHandler)
+	mux.HandleFunc("/user", handler.UserAccessPointHandler)
 
 	mux.HandleFunc("/swagger/", httpSwagger.WrapHandler)
 
