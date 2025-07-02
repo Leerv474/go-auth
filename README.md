@@ -21,6 +21,28 @@ _Swagger_ is used to generated documentation: `/swagger`
 
 ## Running
 
+_Environment variables_:
+
+1.  Database
+
+    - DB_HOST
+    - DB_PORT
+    - DB_USER
+    - DB_PASSWORD
+    - DB_NAME
+    - DB_SSLMODE
+
+2.  Authentication
+
+    - JWT_SECRET
+    - JWT_ACCESS_EXPIRATION
+    - JWT_REFRESH_EXPIRATION
+    - JWT_REFRESH_LENGTH
+
+3.  App
+
+    - SERVER_PORT
+
 The code is run via `docker-compose`
 
 ```bash
